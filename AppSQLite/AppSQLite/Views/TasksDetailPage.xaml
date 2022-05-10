@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AppSQLite.Converters"
+             x:Class="AppSQLite.Views.TasksDetailPage"
+             Title="Detalle de la tarea">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout
+                Margin="20"
+                VerticalOptions="StartAndExpand">
+                <Label 
+                    Text="Nombre de la tarea" />
+                <Entry
+                    Text="{Binding TaskSelected.Name}" />
+                <Label
+                    Text="Notas de la tarea" />
+                <Entry
+                    Text="{Binding TaskSelected.Notes}" />
+                <Label
+                    Text="Finalizado" />
+                <Switch
+                    IsToggled="{Binding TaskSelected.Done}" />
+                <Button
+                    Text="Tomar fotografía"
+                    Command="{Binding TakePictureCommand}" />
+                <Button
+                    Text="Seleccionar fotografía"
+                    Command="{Binding SelectPictureCommand}" />
+                <Label
+                    Text="Fotografía" />
+                <Image
+                    Source="{Binding Picture, Converter={StaticResource ImageConverter}}"
+                    WidthRequest="100" />
+                <Button
+                    Text="Guardar"
+                    Command="{Binding SaveCommand}" />
+                <Button
+                    Text="Eliminar"
+                    Command="{Binding DeleteCommand}" />
+                <Button
+                    Text="Cancelar"
+                    Command="{Binding CancelCommand}" />
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
